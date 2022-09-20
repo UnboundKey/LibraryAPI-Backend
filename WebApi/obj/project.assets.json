@@ -876,6 +876,31 @@
             "rid": "win"
           }
         }
+      },
+      "DataAccess.EFCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9"
+        },
+        "compile": {
+          "bin/placeholder/DataAccess.EFCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccess.EFCore.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
       }
     }
   },
@@ -2302,10 +2327,21 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "DataAccess.EFCore/1.0.0": {
+      "type": "project",
+      "path": "../DataAccess.EFCore/DataAccess.EFCore.csproj",
+      "msbuildProject": "../DataAccess.EFCore/DataAccess.EFCore.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "DataAccess.EFCore >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.9",
@@ -2339,7 +2375,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Benjamin\\source\\repos\\WebApi\\DataAccess.EFCore\\DataAccess.EFCore.csproj": {
+              "projectPath": "C:\\Users\\Benjamin\\source\\repos\\WebApi\\DataAccess.EFCore\\DataAccess.EFCore.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
