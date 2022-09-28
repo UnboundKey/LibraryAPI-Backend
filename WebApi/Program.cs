@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
                       builder =>
                       {
                           builder.WithOrigins("http://localhost:4200",
-                                              "https://localhost:4200").WithMethods("GET","POST","PUT","DELETE");
+                                              "https://localhost:4200").WithMethods("GET","POST","PUT","DELETE").WithHeaders("content-type");
                       });
 });
 
