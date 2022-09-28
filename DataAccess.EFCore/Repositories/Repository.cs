@@ -52,5 +52,10 @@ namespace Domain.Repositories
         {
             _context.RemoveRange(entities);
         }
+
+        public void Update(TEntity entity)
+        {
+            _context.Update(entity);
+        }
     }
 }
