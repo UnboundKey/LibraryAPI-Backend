@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Domain.Entities
 {
     public class Book
     {
@@ -17,5 +19,8 @@
         public string? language { get; set; }
         public string? bookType { get; set; }
         public string? review { get; set; } = "";
+
+        // linking object
+        public ICollection<BookToSeries> Series { get; set; }
     }
 }

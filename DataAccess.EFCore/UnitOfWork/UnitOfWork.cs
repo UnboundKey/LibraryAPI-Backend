@@ -18,6 +18,7 @@ namespace DataAccess.EFCore.UnitOfWork
         }
 
         public IBookRepository Books { get; private set; }
+        public ISeriesRepository Series { get; set; }
 
 
         public int Complete()

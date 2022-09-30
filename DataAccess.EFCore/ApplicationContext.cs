@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DataAccess.EFCore
 {
@@ -12,9 +8,24 @@ namespace DataAccess.EFCore
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            
+
         }
 
+        public DbSet<Series> Series { get; set; }
         public DbSet<Book> Books { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BookToSeries>().HasKey(ba => new { ba.BookId, ba.SeriesId });
+
+            modelBuilder.Entity<BookToSeries>().HasOne(b => b.Book)
+                .WithMany(bs => bs.Series)
+                .HasForeignKey(o => o.BookId).IsRequired(false); 
+
+            modelBuilder.Entity<BookToSeries>()
+                .HasOne(s => s.Series)
+                .WithMany(b => b.Books)
+                .HasForeignKey(o => o.SeriesId).IsRequired(false);
+        }
     }
 }
