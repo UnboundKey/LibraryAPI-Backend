@@ -1,7 +1,9 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,12 @@ namespace DataAccess.EFCore.Repositories
         public IEnumerable<Book> GetByLanguage(string language)
         {
             return context.Books.Where(b => b.language == language).ToList();
+        }
+
+        public IEnumerable<Book> GetByTitle(string title)
+        {
+            var books = context.Books.Where(b => b.title.Contains(title)).Include("Series").ToList();
+            return books;
         }
     }
 }

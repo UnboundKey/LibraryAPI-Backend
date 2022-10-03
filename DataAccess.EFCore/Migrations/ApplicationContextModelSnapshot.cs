@@ -45,7 +45,7 @@ namespace DataAccess.EFCore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("firstPrinted")
                         .HasColumnType("nvarchar(max)");

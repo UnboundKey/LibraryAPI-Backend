@@ -19,6 +19,13 @@ namespace WebApi.Controllers
         {
             this._unitOfWork = unitOfWork;
         }
+        [Route("api/[controller]/search")]
+        [HttpGet("search")]
+        public IActionResult getByTitle([FromQuery]string title)
+        {
+            var books = _unitOfWork.Books.GetByTitle(title);
+            return Ok(books);
+        }
 
         // GET api/<BooksController>/5
         [HttpGet("{id}")]
@@ -36,13 +43,14 @@ namespace WebApi.Controllers
             return Ok(_unitOfWork.Books.GetAll());
         }
 
+
         // POST api/<BooksController>
         [HttpPost]
-        public ActionResult Post([FromBody] Book newBook)
+        public ActionResult Post([FromBody] Book book)
         {
-            _unitOfWork.Books.Add(newBook);
+            _unitOfWork.Books.Add(book);
             _unitOfWork.Complete();
-            return Ok(newBook);
+            return Ok(book);
         }
 
         // PUT api/<BooksController>/5

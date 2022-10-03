@@ -10,5 +10,7 @@ namespace Domain.Interfaces
     public interface IBookRepository : IRepository<Book>
     {
         IEnumerable<Book> GetByLanguage(string language);
+
+        IEnumerable<Book> GetByTitle(string title);
     }
 }
